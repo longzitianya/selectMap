@@ -73,7 +73,7 @@
         var gaodeConfig = {
             scheme_Android: 'androidamap://viewMap?sourceApplication=appname&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
             scheme_IOS: 'iosamap://viewMap?sourceApplication=applicationName&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
-            scheme_web: 'https://uri.amap.com/marker?position=' + fdata.baiduGpsLog + ',' + fdata.baiduGpsLat + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address + '&output=html'
+            scheme_web: 'https://wap.amap.com/?from=m&type=m'
         };
 
         // 判断操作系统，返回百度的不同操作系统下的接口
@@ -98,16 +98,17 @@
         var smap = [hedituConfig, tengxunConfig, baiduConfig, gaodeConfig];
 
         function openClient(i) {
-            var timeout = 600,
+            var timeout = 2000,
                 hasApp = true;
             setTimeout(function() {
                 if (hasApp) {
                     return false;
                 } else {
+                    alert(smap[i].scheme_web)
                     window.location.href = smap[i].scheme_web; //如果手机上不存在该应用，则跳转至该链接。  
                 }
                 document.body.removeChild(ifr);
-            }, 2000);
+            }, 3000);
             var startTime = Date.now();
             var ifr = document.createElement('iframe');
             ifr.src = adjustOS(i);
@@ -115,7 +116,7 @@
             document.body.appendChild(ifr);
             var t = setTimeout(function() {
                 var endTime = Date.now();
-                if (!startTime || endTime - startTime < timeout + 200) {
+                if (!startTime || endTime - startTime < timeout + 100) {
                     hasApp = false;
                     // window.location.href = smap[i].scheme_web;
                     //alert("检测到您未安装地图APP，无法开始导航，建议您安装最新版的高德地图或百度地图");
