@@ -1,0 +1,145 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery手机端底部</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/scrollmenu.css">
+
+</head>
+
+<body style="margin: 0;width: 100%">
+    <div style="width: 300px;margin: 10px auto">
+        <div class="dw-btn btn-danger" style="width:300px;text-align:center;display: block;margin: 20px 0; " onclick="showListbscroll()">选择导航</div>
+    </div>
+
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bscroll.js"></script>
+    <script type="text/javascript" src="js/scrollmenu.js"></script>
+    <script type="text/javascript">
+        /*  var url = location.href;
+                                                                        url = url + '?t=' + encodeURIComponent(new Date().getTime());
+                                                                        window.location.href = url; */
+
+        function showListbscroll() {
+            $("body").scrollmenu({
+                // type:'',
+                bscroll: true,
+                // animateIn:'bounceIn',
+                // animateOut:'bounceOut',
+                click: function(ret) {
+                    if (ret.hasHref) {
+                        return
+                    } else {
+                        switch (ret.index) {
+                            case 0:
+                                openClient(0);
+                                break;
+                            case 1:
+                                openClient(1);
+                                break;
+                            case 2:
+                                openClient(2);
+                                break;
+                            case 3:
+                                openClient(3);
+                                break;
+                        }
+                    }
+                }
+            });
+        }
+        var fdata = {
+            baiduGpsLat: "41.802676",
+            baiduGpsLog: "123.439822",
+            name: "顺风车港汽车装饰维护中心",
+            address: "清真寺北门23号"
+        };
+        var baiduConfig = {
+            scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
+            scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
+            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address
+        };
+        var tengxunConfig = {
+            scheme_Android: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
+            scheme_IOS: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
+            scheme_web: 'https://apis.map.qq.com/uri/v1/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address
+        };
+        var hedituConfig = {
+            scheme_Android: 'com.cmcc.cmrealnavi://cmccmap?type=realtimenavi&latitude=' + fdata.baiduGpsLat + '&longtitude=' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
+            scheme_IOS: 'heditu://com.chinamobile.cmcc?type=naviplanpage&elat=' + fdata.baiduGpsLat + '&elon=' + fdata.baiduGpsLog + '&title=' + fdata.name + '&ename=' + fdata.name + '&eaddress=' + fdata.address,
+            scheme_web: 'http://dhwap.mlocso.com/headpage/html/download.html'
+        };
+        var gaodeConfig = {
+            scheme_Android: 'androidamap://viewMap?sourceApplication=appname&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
+            scheme_IOS: 'iosamap://viewMap?sourceApplication=applicationName&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
+            scheme_web: ' http://uri.amap.com/marker?position=' + fdata.baiduGpsLog + ',' + fdata.baiduGpsLat + '&name=address&coordinate=gaode&callnative=1'
+        };
+
+        // 判断操作系统，返回百度的不同操作系统下的接口
+        function adjustOS(i) {
+            var ua = window.navigator.userAgent.toLowerCase();
+            switch (i) {
+                case 0:
+                    return (ua.indexOf('os') > 0) ? hedituConfig.scheme_IOS : hedituConfig.scheme_Android
+                    break;
+                case 1:
+                    return (ua.indexOf('os') > 0) ? tengxunConfig.scheme_IOS : tengxunConfig.scheme_Android
+                    break;
+                case 2:
+                    return (ua.indexOf('os') > 0) ? baiduConfig.scheme_IOS : baiduConfig.scheme_Android
+                    break;
+                case 3:
+                    return (ua.indexOf('os') > 0) ? gaodeConfig.scheme_IOS : gaodeConfig.scheme_Android
+                    break;
+            }
+
+        }
+        var smap = [hedituConfig, tengxunConfig, baiduConfig, gaodeConfig];
+
+        function openClient(i) {
+            var timeout = 300,
+                startTime = new Date().getTime();
+            iframe2open(i);
+            var t = setTimeout(function() {
+                var endTime = new Date().getTime();
+                if (!startTime || endTime - startTime < timeout + 100) {
+                    jump2download(smap[i].scheme_web);
+                    //alert("检测到您未安装地图APP，无法开始导航，建议您安装最新版的高德地图或百度地图");
+                }
+            }, timeout);
+            window.onblur = function() {
+                clearTimeout(t);
+            }
+        }
+
+        //利用iframe打开客户端
+        function iframe2open(i) {
+            var src = adjustOS(i),
+                iframe = document.createElement("iframe");
+            iframe.src = src;
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+        }
+        var t1 = new Date().getTime();
+        //跳转下载页面
+        function jump2download(url) {
+            var _timer = null;
+            clearTimeout(_timer);
+            _timer = setTimeout(function() {
+                var t2 = new Date().getTime();
+                if (t2 - t1 <= 800) {
+                    window.location = url;
+                }
+            }, 400);
+        }
+    </script>
+
+
+</body>
+
+</html>
