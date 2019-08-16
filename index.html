@@ -22,8 +22,8 @@
     <script type="text/javascript" src="js/scrollmenu.js"></script>
     <script type="text/javascript">
         /*  var url = location.href;
-                url = url + '?t=' + encodeURIComponent(new Date().getTime());
-                window.location.href = url; */
+                                url = url + '?t=' + encodeURIComponent(new Date().getTime());
+                                window.location.href = url; */
 
         function showListbscroll() {
             $("body").scrollmenu({
@@ -102,27 +102,17 @@
         var smap = [hedituConfig, tengxunConfig, baiduConfig, gaodeConfig];
 
         function openClient(i) {
-            var timeout = 2000,
-                hasApp = true;
-            setTimeout(function() {
-                if (hasApp) {
-                    return false;
-                } else {
-                    alert(smap[i].scheme_web)
-                    window.location.href = smap[i].scheme_web; //如果手机上不存在该应用，则跳转至该链接。  
-                }
-                document.body.removeChild(ifr);
-            }, 3000);
-            var startTime = Date.now();
+            var timeout = 3000,
+                var startTime = Date.now();
             var ifr = document.createElement('iframe');
+            alert(adjustOS(i))
             ifr.src = adjustOS(i);
             ifr.style.display = 'none';
             document.body.appendChild(ifr);
             var t = setTimeout(function() {
                 var endTime = Date.now();
                 if (!startTime || endTime - startTime < timeout + 100) {
-                    hasApp = false;
-                    // window.location.href = smap[i].scheme_web;
+                    window.location.href = smap[i].scheme_web;
                     //alert("检测到您未安装地图APP，无法开始导航，建议您安装最新版的高德地图或百度地图");
                 }
             }, timeout);
