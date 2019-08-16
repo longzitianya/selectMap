@@ -22,8 +22,8 @@
     <script type="text/javascript" src="js/scrollmenu.js"></script>
     <script type="text/javascript">
         /*  var url = location.href;
-                                                                                        url = url + '?t=' + encodeURIComponent(new Date().getTime());
-                                                                                        window.location.href = url; */
+                                                                                                url = url + '?t=' + encodeURIComponent(new Date().getTime());
+                                                                                                window.location.href = url; */
 
         function showListbscroll() {
             $("body").scrollmenu({
@@ -60,65 +60,64 @@
             address: "清真寺北门23号"
         };
         var baiduConfig = {
-            scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
-            scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
-            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address
-        };
-        var tengxunConfig = {
-            scheme_Android: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
-            scheme_IOS: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
-            scheme_web: 'https://apis.map.qq.com/uri/v1/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address
-        };
-        var hedituConfig = {
-            scheme_Android: 'com.cmcc.cmrealnavi://cmccmap?type=realtimenavi&latitude=' + fdata.baiduGpsLat + '&longtitude=' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
-            scheme_IOS: 'heditu://com.chinamobile.cmcc?type=naviplanpage&elat=' + fdata.baiduGpsLat + '&elon=' + fdata.baiduGpsLog + '&title=' + fdata.name + '&ename=' + fdata.name + '&eaddress=' + fdata.address,
-            scheme_web: 'http://dhwap.mlocso.com/headpage/html/download.html'
-        };
-        var gaodeConfig = {
-            scheme_Android: 'androidamap://viewMap?sourceApplication=appname&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
-            scheme_IOS: 'iosamap://viewMap?sourceApplication=applicationName&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
-            scheme_web: ' http://uri.amap.com/marker?position=' + fdata.baiduGpsLog + ',' + fdata.baiduGpsLat + '&name=address&coordinate=gaode&callnative=1'
-        };
+                scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
+                scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
+                scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address + '&output=html'
+                var tengxunConfig = {
+                    scheme_Android: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
+                    scheme_IOS: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
+                    scheme_web: 'https://apis.map.qq.com/uri/v1/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address
+                };
+                var hedituConfig = {
+                    scheme_Android: 'com.cmcc.cmrealnavi://cmccmap?type=realtimenavi&latitude=' + fdata.baiduGpsLat + '&longtitude=' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
+                    scheme_IOS: 'heditu://com.chinamobile.cmcc?type=naviplanpage&elat=' + fdata.baiduGpsLat + '&elon=' + fdata.baiduGpsLog + '&title=' + fdata.name + '&ename=' + fdata.name + '&eaddress=' + fdata.address,
+                    scheme_web: 'http://dhwap.mlocso.com/headpage/html/download.html'
+                };
+                var gaodeConfig = {
+                    scheme_Android: 'androidamap://viewMap?sourceApplication=appname&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
+                    scheme_IOS: 'iosamap://viewMap?sourceApplication=applicationName&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
+                    scheme_web: ' http://uri.amap.com/marker?position=' + fdata.baiduGpsLog + ',' + fdata.baiduGpsLat + '&name=address&coordinate=gaode&callnative=1'
+                };
 
-        // 判断操作系统，返回百度的不同操作系统下的接口
-        function adjustOS(i) {
-            var ua = window.navigator.userAgent.toLowerCase();
-            switch (i) {
-                case 0:
-                    return (ua.indexOf('os') > 0) ? hedituConfig.scheme_IOS : hedituConfig.scheme_Android
-                    break;
-                case 1:
-                    return (ua.indexOf('os') > 0) ? tengxunConfig.scheme_IOS : tengxunConfig.scheme_Android
-                    break;
-                case 2:
-                    return (ua.indexOf('os') > 0) ? baiduConfig.scheme_IOS : baiduConfig.scheme_Android
-                    break;
-                case 3:
-                    return (ua.indexOf('os') > 0) ? gaodeConfig.scheme_IOS : gaodeConfig.scheme_Android
-                    break;
-            }
+                // 判断操作系统，返回百度的不同操作系统下的接口
+                function adjustOS(i) {
+                    var ua = window.navigator.userAgent.toLowerCase();
+                    switch (i) {
+                        case 0:
+                            return (ua.indexOf('os') > 0) ? hedituConfig.scheme_IOS : hedituConfig.scheme_Android
+                            break;
+                        case 1:
+                            return (ua.indexOf('os') > 0) ? tengxunConfig.scheme_IOS : tengxunConfig.scheme_Android
+                            break;
+                        case 2:
+                            return (ua.indexOf('os') > 0) ? baiduConfig.scheme_IOS : baiduConfig.scheme_Android
+                            break;
+                        case 3:
+                            return (ua.indexOf('os') > 0) ? gaodeConfig.scheme_IOS : gaodeConfig.scheme_Android
+                            break;
+                    }
 
-        }
-        var smap = [hedituConfig, tengxunConfig, baiduConfig, gaodeConfig];
-        var timeout = 600;
-
-        function openClient(i) {
-            var startTime = Date.now();
-            var ifr = document.createElement('iframe');
-            ifr.src = adjustOS();
-            ifr.style.display = 'none';
-            document.body.appendChild(ifr);
-            var t = setTimeout(function() {
-                var endTime = Date.now();
-                if (!startTime || endTime - startTime < timeout + 200) {
-                    window.location.href = smap[i].scheme_web;
-                    //alert("检测到您未安装地图APP，无法开始导航，建议您安装最新版的高德地图或百度地图");
                 }
-            }, timeout);
-            window.onblur = function() {
-                clearTimeout(t);
-            }
-        }
+                var smap = [hedituConfig, tengxunConfig, baiduConfig, gaodeConfig];
+                var timeout = 600;
+
+                function openClient(i) {
+                    var startTime = Date.now();
+                    var ifr = document.createElement('iframe');
+                    ifr.src = adjustOS();
+                    ifr.style.display = 'none';
+                    document.body.appendChild(ifr);
+                    var t = setTimeout(function() {
+                        var endTime = Date.now();
+                        if (!startTime || endTime - startTime < timeout + 200) {
+                            window.location.href = smap[i].scheme_web;
+                            //alert("检测到您未安装地图APP，无法开始导航，建议您安装最新版的高德地图或百度地图");
+                        }
+                    }, timeout);
+                    window.onblur = function() {
+                        clearTimeout(t);
+                    }
+                }
     </script>
 
 
