@@ -22,8 +22,8 @@
     <script type="text/javascript" src="js/scrollmenu.js"></script>
     <script type="text/javascript">
         /*  var url = location.href;
-                                        url = url + '?t=' + encodeURIComponent(new Date().getTime());
-                                        window.location.href = url; */
+                                                url = url + '?t=' + encodeURIComponent(new Date().getTime());
+                                                window.location.href = url; */
 
         function showListbscroll() {
             $("body").scrollmenu({
@@ -103,7 +103,7 @@
 
         function openClient(i) {
             var timeout = 300,
-                var startTime = new Date().getTime();
+                startTime = new Date().getTime();
             iframe2open(i);
             var t = setTimeout(function() {
                 var endTime = new Date().getTime();
@@ -121,7 +121,6 @@
         function iframe2open(i) {
             var src = adjustOS(i),
                 iframe = document.createElement("iframe");
-
             iframe.src = src;
             iframe.style.display = "none";
             document.body.appendChild(iframe);
