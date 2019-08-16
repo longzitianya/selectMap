@@ -50,16 +50,16 @@
             });
         }
         var fdata = {
-            baiduGpsLat: "41.707916",
-            baiduGpsLog: "123.443357",
-            address: "浑南区世纪路与高科路交叉口西100米"
+            baiduGpsLat: "41.69910851890218",
+            baiduGpsLog: "123.43091956074971",
+            address: "辽宁省沈阳市东陵区世纪路39号(东软软件园内)"
         };
         var baiduConfig = {
             scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address,
             scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address,
             scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address + '&output=html'
         };
-        var timeout = 600;
+        var timeout = 1000;
         // 判断操作系统，返回百度的不同操作系统下的接口
         function adjustOS() {
             var ua = window.navigator.userAgent.toLowerCase();
