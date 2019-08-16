@@ -58,12 +58,12 @@
         var baiduConfig = {
             scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
             scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
-            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address + '&output=html'
+            scheme_web: 'http://map.baidu.com/zt/client/index/?fr=pc_newqrcode'
         };
         var tengxunConfig = {
             scheme_Android: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
             scheme_IOS: 'qqmap://map/marker?marker=coord:' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + ';title=' + fdata.name + '&referer=myapp&name=' + fdata.name + '&address=' + fdata.address,
-            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address + '&output=html'
+            scheme_web: 'https://mapdownload.map.qq.com/weixin?key=wx&referer=wx1&channel=00008'
         };
         var hedituConfig = {
             scheme_Android: 'com.cmcc.cmrealnavi://cmccmap?type=realtimenavi&latitude=' + fdata.baiduGpsLat + '&longtitude=' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address,
@@ -73,7 +73,7 @@
         var gaodeConfig = {
             scheme_Android: 'androidamap://viewMap?sourceApplication=appname&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
             scheme_IOS: 'iosamap://viewMap?sourceApplication=applicationName&poiname=' + fdata.name + '&lat=' + fdata.baiduGpsLat + '&lon=' + fdata.baiduGpsLog + '&dev=1&address=' + fdata.address,
-            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address + '&output=html'
+            scheme_web: 'https://uri.amap.com/marker?position=' + fdata.baiduGpsLog + ',' + fdata.baiduGpsLat + '&title=' + fdata.name + '&name=' + fdata.name + '&address=' + fdata.address + '&output=html'
         };
 
         // 判断操作系统，返回百度的不同操作系统下的接口
