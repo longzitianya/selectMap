@@ -22,8 +22,8 @@
     <script type="text/javascript" src="js/scrollmenu.js"></script>
     <script type="text/javascript">
         /*  var url = location.href;
-                                url = url + '?t=' + encodeURIComponent(new Date().getTime());
-                                window.location.href = url; */
+                                        url = url + '?t=' + encodeURIComponent(new Date().getTime());
+                                        window.location.href = url; */
 
         function showListbscroll() {
             $("body").scrollmenu({
@@ -102,23 +102,41 @@
         var smap = [hedituConfig, tengxunConfig, baiduConfig, gaodeConfig];
 
         function openClient(i) {
-            var timeout = 3000,
-                var startTime = Date.now();
-            var ifr = document.createElement('iframe');
-            alert(adjustOS(i))
-            ifr.src = adjustOS(i);
-            ifr.style.display = 'none';
-            document.body.appendChild(ifr);
+            var timeout = 300,
+                var startTime = new Date().getTime();
+            iframe2open(i);
             var t = setTimeout(function() {
-                var endTime = Date.now();
+                var endTime = new Date().getTime();
                 if (!startTime || endTime - startTime < timeout + 100) {
-                    window.location.href = smap[i].scheme_web;
+                    jump2download(smap[i].scheme_web);
                     //alert("检测到您未安装地图APP，无法开始导航，建议您安装最新版的高德地图或百度地图");
                 }
             }, timeout);
             window.onblur = function() {
                 clearTimeout(t);
             }
+        }
+
+        //利用iframe打开客户端
+        function iframe2open(i) {
+            var src = adjustOS(i),
+                iframe = document.createElement("iframe");
+
+            iframe.src = src;
+            iframe.style.display = "none";
+            document.body.appendChild(iframe);
+        }
+        var t1 = new Date().getTime();
+        //跳转下载页面
+        function jump2download(url) {
+            var _timer = null;
+            clearTimeout(_timer);
+            _timer = setTimeout(function() {
+                var t2 = new Date().getTime();
+                if (t2 - t1 <= 800) {
+                    window.location = url;
+                }
+            }, 400);
         }
     </script>
 
