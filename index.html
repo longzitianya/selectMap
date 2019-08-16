@@ -50,14 +50,14 @@
             });
         }
         var fdata = {
-            baiduGpsLat: "41.69910851890218",
-            baiduGpsLog: "123.43091956074971",
-            address: "辽宁省沈阳市东陵区世纪路39号(东软软件园内)"
+            baiduGpsLat: "41.802676",
+            baiduGpsLog: "123.439822",
+            name: "顺风车港汽车装饰维护中心"
         };
         var baiduConfig = {
-            scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address,
-            scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address,
-            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address + '&output=html'
+            scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name,
+            scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name,
+            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&name=' + fdata.name + '&output=html'
         };
         var timeout = 1000;
         // 判断操作系统，返回百度的不同操作系统下的接口
