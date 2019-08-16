@@ -1,110 +1,90 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>jQuery手机端底部</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
 
-<link rel="stylesheet" href="css/global.css">
-<link rel="stylesheet" href="css/animate.css">
-<link rel="stylesheet" href="css/scrollmenu.css">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery手机端底部</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0,maximum-scale=1.0, user-scalable=no">
+
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/scrollmenu.css">
 
 </head>
+
 <body style="margin: 0;width: 100%">
-<div style="width: 300px;margin: 10px auto">
-	<div class="dw-btn btn-danger" style="width:300px;text-align:center;display: block;margin: 20px 0; " onClick="showListbscroll()">选择导航</div>
-</div>
+    <div style="width: 300px;margin: 10px auto">
+        <div class="dw-btn btn-danger" style="width:300px;text-align:center;display: block;margin: 20px 0; " onclick="showListbscroll()">选择导航</div>
+    </div>
 
-<script type="text/javascript" src="js/jquery.js"></script>
-<script type="text/javascript" src="js/bscroll.js"></script>
-<script type="text/javascript" src="js/scrollmenu.js"></script>
-<script type="text/javascript">
-function showList(){
-	$("body").scrollmenu({
-		type:'cross',
-		// bscroll:true,
-		// animateIn:'bounceIn',
-		// animateOut:'bounceOut',
-		click:function(ret){
-			if(ret.hasHref){
-				return
-			}else{
-				// switch (ret.index){
-				// 	case 0:
-				// 	alert(0);
-				// 	break;
-				// }
-				alert(JSON.stringify(ret));
-			}
-		}
-	});
-}
+    <script type="text/javascript" src="js/jquery.js"></script>
+    <script type="text/javascript" src="js/bscroll.js"></script>
+    <script type="text/javascript" src="js/scrollmenu.js"></script>
+    <script type="text/javascript">
+        function showListbscroll() {
+            $("body").scrollmenu({
+                // type:'',
+                bscroll: true,
+                // animateIn:'bounceIn',
+                // animateOut:'bounceOut',
+                click: function(ret) {
+                    if (ret.hasHref) {
+                        return
+                    } else {
+                        switch (ret.index) {
+                            case 0:
+                                alert(ret.title)
+                                break;
+                            case 1:
+                                alert(ret.title)
+                                break;
+                            case 2:
+                                openClient();
+                                break;
+                            case 3:
+                                alert(ret.title)
+                                break;
+                        }
+                    }
+                }
+            });
+        }
+        var fdata = {
+            baiduGpsLat: "123.443375",
+            baiduGpsLog: "41.707916",
+            address: "浑南区世纪路与高科路交叉口西100米"
+        };
+        var baiduConfig = {
+            scheme_Android: 'bdapp://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address,
+            scheme_IOS: 'baidumap://map/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address,
+            scheme_web: 'http://api.map.baidu.com/marker?location=' + fdata.baiduGpsLat + ',' + fdata.baiduGpsLog + '&title=' + fdata.name + '&content=' + fdata.address + '&output=html'
+        };
+        var timeout = 600;
+        // 判断操作系统，返回百度的不同操作系统下的接口
+        function adjustOS() {
+            var ua = window.navigator.userAgent.toLowerCase();
+            return (ua.indexOf('os') > 0) ? baiduConfig.scheme_IOS : baiduConfig.scheme_Android
+        }
 
-function showList1(){
-	$("body").scrollmenu({
-		type:'',
-		// bscroll:true,
-		// animateIn:'bounceIn',
-		// animateOut:'bounceOut',
-		click:function(ret){
-			if(ret.hasHref){
-				return
-			}else{
-				// switch (ret.index){
-				// 	case 0:
-				// 	alert(0);
-				// 	break;
-				// }
-				alert(JSON.stringify(ret));
-			}
-		}
-	});
-}
+        function openClient() {
+            var startTime = Date.now();
+            var ifr = document.createElement('iframe');
+            ifr.src = adjustOS();
+            ifr.style.display = 'none';
+            document.body.appendChild(ifr);
+            var t = setTimeout(function() {
+                var endTime = Date.now();
+                if (!startTime || endTime - startTime < timeout + 200) {
+                    window.location.href = baiduConfig.scheme_web;
+                }
+            }, timeout);
+            window.onblur = function() {
+                clearTimeout(t);
+            }
+        }
+    </script>
 
-function showListbscroll(){
-	$("body").scrollmenu({
-		// type:'',
-		bscroll:true,
-		// animateIn:'bounceIn',
-		// animateOut:'bounceOut',
-		click:function(ret){
-			if(ret.hasHref){
-				return
-			}else{
-				// switch (ret.index){
-				// 	case 0:
-				// 	alert(0);
-				// 	break;
-				// }
-				alert(JSON.stringify(ret));
-			}
-		}
-	});
-}
 
-function showListnoborder(){
-	$("body").scrollmenu({
-		type:'cross',
-		hasLineBorder:false,
-		// bscroll:true,
-		// animateIn:'bounceIn',
-		// animateOut:'bounceOut',
-		click:function(ret){
-			if(ret.hasHref){
-				return
-			}else{
-				// switch (ret.index){
-				// 	case 0:
-				// 	alert(0);
-				// 	break;
-				// }
-				alert(JSON.stringify(ret));
-			}
-		}
-	});
-}
-</script>
-
- 
 </body>
+
 </html>
